@@ -1,0 +1,37 @@
+# ============================
+# wf-16s analysis parameters
+# ============================
+
+# ---- Input interpretation ----
+classifier: "minimap2"
+
+# taxonomic_rank: S=species, G=genus
+taxonomic_rank: "G"
+
+# explicit database choice
+database_set: "SILVA_138_1"
+offline:true
+database"/home/nicolas/projects/metabarcoding/epi2me_databases/SILVA_138_1"
+
+# ---- Read filtering ----
+min_len: 1000
+max_len: 2500
+
+# keep default behaviour explicit
+min_read_qual: null
+
+# ---- Alignment / classification thresholds ----
+min_percent_identity: 95
+min_ref_coverage: 90
+
+# ---- Output behaviour ----
+include_read_assignments: false
+output_unclassified: false
+
+# ---- Performance / reproducibility ----
+threads: 8
+keep_bam: false
+
+# ---- Infrastructure / caching ----
+store_dir: "/home/nicolas/projects/metabarcoding/epi2me_databases"
+
