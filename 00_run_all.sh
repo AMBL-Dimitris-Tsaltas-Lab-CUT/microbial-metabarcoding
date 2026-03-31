@@ -38,6 +38,15 @@ echo ">>> Step 4: Alpha Diversity"
 echo "✓ Alpha diversity completed"
 echo ""
 
+# ------------------------------
+# Step 5 – Combined Report
+# ------------------------------
+echo ">>> Step 5: Combined Report"
+./06_make_combined_report.sh
+echo "✓ Combined report completed"
+echo ""
+
+
 echo "======================================"
 echo " Pipeline finished successfully"
 echo "======================================"

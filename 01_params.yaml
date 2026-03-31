@@ -9,12 +9,10 @@ classifier: "minimap2"
 taxonomic_rank: "G"
 
 # explicit database choice
-database_set: "SILVA_138_1"
-offline:true
-database"/home/nicolas/projects/metabarcoding/epi2me_databases/SILVA_138_1"
+database_set: "ncbi_16s_18s_28s_ITS"
 
 # ---- Read filtering ----
-min_len: 1000
+min_len: 200
 max_len: 2500
 
 # keep default behaviour explicit
@@ -27,11 +25,12 @@ min_ref_coverage: 90
 # ---- Output behaviour ----
 include_read_assignments: false
 output_unclassified: false
+minimap2_by_reference: true
 
 # ---- Performance / reproducibility ----
 threads: 8
 keep_bam: false
 
 # ---- Infrastructure / caching ----
-store_dir: "/home/nicolas/projects/metabarcoding/epi2me_databases"
+store_dir: "/Users/nkylilis/metabarcoding/epi2me_databases"
 
