@@ -1,0 +1,23 @@
+# ============================
+# wf-16s analysis parameters
+# ============================
+
+classifier: "minimap2"
+taxonomic_rank: "G"
+database_set: "ncbi_16s_18s_28s_ITS"
+
+min_len: 1000
+max_len: 2000
+min_read_qual: null
+
+min_percent_identity: 95
+min_ref_coverage: 90
+
+include_read_assignments: false
+output_unclassified: false
+minimap2_by_reference: true
+
+threads: 8
+keep_bam: false
+
+store_dir: "/Users/nkylilis/metabarcoding/epi2me_databases"

@@ -2,10 +2,36 @@
 set -euo pipefail
 
 # ------------------------------
+# Mode handling
+# ------------------------------
+MODE="${1:-default}"
+MODE="$(echo "$MODE" | tr '[:lower:]' '[:upper:]')"
+
+echo "wf-16s mode: ${MODE}"
+
+case "${MODE}" in
+  DEFAULT)
+    PARAMS_FILE="01_params_ncbi.yaml"
+    ;;
+  16S)
+    PARAMS_FILE="01_params_silva.yaml"
+    ;;
+  ITS)
+    PARAMS_FILE="01_params_ncbi.yaml"
+    ;;
+  *)
+    echo "ERROR: Unknown mode '${MODE}'"
+    exit 1
+    ;;
+esac
+
+echo "Using params file: ${PARAMS_FILE}"
+
+# ------------------------------
 # Configuration
 # ------------------------------
 FASTQ_DIR="data/fastq"
-OUTDIR="results/02_wf-16s_$(date +%Y-%m-%d_%H-%M-%S)"
+OUTDIR="results/02_wf-16s_${MODE}_$(date +%Y-%m-%d_%H-%M-%S)"
 WORKDIR="results/work"
 SAMPLE_SHEET="data/fastq/sample_sheet.csv"
 
@@ -13,7 +39,7 @@ SAMPLE_SHEET="data/fastq/sample_sheet.csv"
 # Sanity checks
 # ------------------------------
 if ! command -v docker >/dev/null 2>&1; then
-  echo "ERROR: docker not found. Install Docker Desktop and start it."
+  echo "ERROR: docker not found."
   exit 1
 fi
 
@@ -45,13 +71,12 @@ mkdir -p "$OUTDIR" "$WORKDIR"
 nextflow run epi2me-labs/wf-16s \
   -profile standard \
   -w "$WORKDIR" \
-  -params-file 01_params.yaml \
+  -params-file "${PARAMS_FILE}" \
   --fastq "$FASTQ_DIR" \
   --sample_sheet "$SAMPLE_SHEET" \
   --out_dir "$OUTDIR" \
   --keep_bam \
   --include_read_assignments \
-  --output_unclassified \
-  "$@"
+  --output_unclassified
 
 echo "wf-16s finished. Results in $OUTDIR"
