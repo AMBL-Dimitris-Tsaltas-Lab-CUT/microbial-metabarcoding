@@ -17,7 +17,7 @@ case "${MODE}" in
     PARAMS_FILE="01_params_silva.yaml"
     ;;
   ITS)
-    PARAMS_FILE="01_params_ncbi.yaml"
+    PARAMS_FILE="01_params_ncbi_its.yaml"
     ;;
   *)
     echo "ERROR: Unknown mode '${MODE}'"
