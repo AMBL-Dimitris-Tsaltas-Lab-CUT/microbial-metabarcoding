@@ -10,7 +10,7 @@ min_len: 300
 max_len: 1000
 min_read_qual: null
 
-min_percent_identity: 80
+min_percent_identity: 90
 min_ref_coverage: 80
 
 include_read_assignments: false
